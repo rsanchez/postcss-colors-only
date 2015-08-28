@@ -80,8 +80,6 @@ npm install postcss-colors-only
 
 ## Usage
 
-### Example
-
 ```javascript
 var postcss = require('postcss');
 var colorsOnly = require('postcss-colors-only');
