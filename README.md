@@ -89,7 +89,7 @@ var options = {
 };
 
 postcss()
-  .use(colorGray(options))
+  .use(colorsOnly(options))
   .process('a { color: red; background: #FF0 url(foo.jpg); font-size: 12px; }')
   .css;
 //=> 'a { color: red; background-color: #FF0; }'
