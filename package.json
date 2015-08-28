@@ -1,6 +1,6 @@
 {
   "name": "postcss-colors-only",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "PostCSS plugin to remove all rules except those which contain one or more colors.",
   "main": "index.js",
   "keywords": [
