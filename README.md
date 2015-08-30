@@ -97,7 +97,7 @@ postcss()
 
 ## CLI
 
-This plugin is also available as a standalone command line tool. See [css-colors-only](https://github.com/rsanchez/css-colors-only).
+This plugin is also part of a standalone command line tool. See [css-color-extractor-cli](https://github.com/rsanchez/css-color-extractor-cli).
 
 ## License
 
