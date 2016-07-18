@@ -26,7 +26,32 @@ module.exports = postcss.plugin('postcss-colors-only', function (options) {
         }
     }
 
-    function processDecl(decl) {
+    function removeColors(decl, colors) {
+        var blacklist = [
+            'gradient',
+            'text-shadow'
+        ];
+
+        if (blacklist.some(function (regexp) {
+            return ['value', 'prop'].some(function (key) {
+                return decl[key].indexOf(regexp) !== -1;
+            });
+        })) {
+            return;
+        }
+
+        if (colors.length) {
+            decl.value = colors.reduce(function (value, color) {
+                return value.replace(color, '');
+            }, decl.value);
+        }
+
+        if (decl.value.length === 0) {
+            decl.remove();
+        }
+    }
+
+    function processDeclWithColorKeeping(decl) {
         var colors = extractor.fromDecl(decl, options);
 
         if (colors.length === 0) {
@@ -35,6 +60,20 @@ module.exports = postcss.plugin('postcss-colors-only', function (options) {
             transformProperty(decl, colors);
         }
     }
+
+    function processDeclWithColorRemoving(decl) {
+        var colors = extractor.fromDecl(decl, options);
+
+        if (colors.length !== 0) {
+            removeColors(decl, colors);
+        } else {
+            transformProperty(decl, colors);
+        }
+    }
+
+    var processDecl = options.inverse ?
+                        processDeclWithColorRemoving :
+                        processDeclWithColorKeeping;
 
     function processRule(rule) {
         rule.each(processDecl);
