@@ -43,7 +43,7 @@ module.exports = postcss.plugin('postcss-colors-only', function (options) {
         if (colors.length) {
             decl.value = colors.reduce(function (value, color) {
                 return value.replace(color, '');
-            }, decl.value);
+            }, decl.value).trim();
         }
 
         if (decl.value.length === 0) {

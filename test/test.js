@@ -737,4 +737,14 @@ describe('postcss-colors-only with inverse flag enabled', function () {
             done
         );
     });
+
+    it('should remove colors from shorthand rules', function (done) {
+        test(
+            'p { border: 1px solid red; }',
+            'p { border: 1px solid; }',
+            opts,
+            done
+        );
+    });
+
 });
