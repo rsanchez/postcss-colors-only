@@ -747,4 +747,13 @@ describe('postcss-colors-only with inverse flag enabled', function () {
         );
     });
 
+    it('should remove empty rules', function (done) {
+        test(
+            'p { border: 1px solid red; color: blue; }',
+            'p { border: 1px solid; }',
+            opts,
+            done
+        );
+    });
+
 });
