@@ -32,9 +32,9 @@ module.exports = postcss.plugin('postcss-colors-only', function (options) {
             'text-shadow'
         ];
 
-        if (blacklist.some(function (regexp) {
+        if (blacklist.some(function (blacklistItem) {
             return ['value', 'prop'].some(function (key) {
-                return decl[key].indexOf(regexp) !== -1;
+                return decl[key].indexOf(blacklistItem) !== -1;
             });
         })) {
             return;
