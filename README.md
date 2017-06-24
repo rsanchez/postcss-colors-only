@@ -86,6 +86,7 @@ var colorsOnly = require('postcss-colors-only');
 var options = {
   withoutGrey: false, // set to true to remove rules that only have grey colors
   withoutMonochrome: false, // set to true to remove rules that only have grey, black, or white colors
+  inverse: false, // set to true to remove colors from rules
 };
 
 postcss()

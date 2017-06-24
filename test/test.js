@@ -550,3 +550,210 @@ describe('postcss-colors-only', function () {
         );
     });
 });
+
+describe('postcss-colors-only with inverse flag enabled', function () {
+
+    var opts = { inverse: true };
+
+    it('should remove named color.', function (done) {
+        test(
+            'a { color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove three-letter hex color.', function (done) {
+        test(
+            'a { color: #123; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove six-letter hex color.', function (done) {
+        test(
+            'a { color: #123123; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove rgb color.', function (done) {
+        test(
+            'a { color: rgb(1, 2, 3); } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove rgba color.', function (done) {
+        test(
+            'a { color: rgba(1, 2, 3, 0.5); } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove hsl color.', function (done) {
+        test(
+            'a { color: hsl(1, 2%, 3%); } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove hsla color.', function (done) {
+        test(
+            'a { color: hsla(1, 2%, 3%, 0.5); } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove background-color.', function (done) {
+        test(
+            'a { background-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove border-color.', function (done) {
+        test(
+            'a { border-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove border-top-color.', function (done) {
+        test(
+            'a { border-top-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove border-right-color.', function (done) {
+        test(
+            'a { border-right-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove border-bottom-color.', function (done) {
+        test(
+            'a { border-bottom-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove border-left-color.', function (done) {
+        test(
+            'a { border-left-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should keep background-image.', function (done) {
+        test(
+            'a { background-image: linear-gradient(to bottom, red, blue); } ' +
+                'p { display: block; }',
+            'a { background-image: linear-gradient(to bottom, red, blue); } ' +
+                'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove outline-color.', function (done) {
+        test(
+            'a { outline-color: red; } p { display: block; }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should keep text-shadow.', function (done) {
+        test(
+            'a { text-shadow: 1px 1px 2px black; } p { display: block; }',
+            'a { text-shadow: 1px 1px 2px black; } p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove comment', function (done) {
+        test(
+            'a { color: red; } p { display: block; } /* some comment */',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should read nested @media rules', function (done) {
+        test(
+            'a { color: red; } @media (screen-only) { a { color: blue; } ' +
+                'p { display: block; } }',
+            '@media (screen-only) { p { display: block; } }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove empty @media rule', function (done) {
+        test(
+            'p { display: block; } @media (screen-only) { a { color: blue; } }',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove non-media atrule', function (done) {
+        test(
+            'a { color: red; } p { display: block; } @charset "UTF-8";',
+            'p { display: block; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove colors from shorthand rules', function (done) {
+        test(
+            'p { border: 1px solid red; }',
+            'p { border: 1px solid; }',
+            opts,
+            done
+        );
+    });
+
+    it('should remove empty rules', function (done) {
+        test(
+            'p { border: 1px solid red; color: blue; }',
+            'p { border: 1px solid; }',
+            opts,
+            done
+        );
+    });
+
+});
