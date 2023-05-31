@@ -1,12 +1,10 @@
-# PostCSS Colors Only [![Build Status][ci-img]][ci]
+# PostCSS Colors Only
 
 [PostCSS] plugin to remove all rules except those which contain one or more colors.
 
 This tool is useful if you are re-skinning a site with a new color scheme and need a starting point for a new stylesheet.
 
 [PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/rsanchez/postcss-colors-only.svg
-[ci]:      https://travis-ci.org/rsanchez/postcss-colors-only
 
 ```css
 .foo {
@@ -57,6 +55,11 @@ This plugin will remove any CSS rules that do not contain a color (named, hex, r
 * `outline-color`
 * `text-shadow`
 * `box-shadow`
+* `fill`
+* `stroke`
+* `stop-color`
+* `flood-color`
+* `lighting-color`
 
 The following CSS properties will be transformed, leaving only the color part of the declaration:
 
