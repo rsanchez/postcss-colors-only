@@ -548,6 +548,15 @@ describe('postcss-colors-only', function() {
       done,
     );
   });
+
+  it('should ignore border: 0', function(done) {
+    test(
+      'p { border: 0; }',
+      '',
+      {},
+      done,
+    );
+  });
 });
 
 describe('postcss-colors-only with inverse flag enabled', function() {
