@@ -53,6 +53,8 @@ This plugin will remove any CSS rules that do not contain a color (named, hex, r
 * `border-left-color`
 * `outline`
 * `outline-color`
+* `text-decoration`
+* `text-decoration-color`
 * `text-shadow`
 * `box-shadow`
 * `fill`
@@ -70,6 +72,7 @@ The following CSS properties will be transformed, leaving only the color part of
 * `border-bottom` → `border-bottom-color`
 * `border-left` → `border-left-color`
 * `outline` → `outline-color`
+* `text-decoration` → `text-decoration-color`
 
 ## Installation
 

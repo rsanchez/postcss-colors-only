@@ -14,6 +14,7 @@ module.exports = postcss.plugin('postcss-colors-only', function(options) {
       'border-bottom': 'border-bottom-color',
       'border-left': 'border-left-color',
       outline: 'outline-color',
+      'text-decoration': 'text-decoration-color',
     };
 
     if (typeof propertyTransformers[decl.prop] === 'undefined') {
